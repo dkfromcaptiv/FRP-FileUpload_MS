@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload to AWS S3</title>
+    <link rel="stylesheet" href="FRP_upload.css">
+
+</head>
+
+<body>
+    <div class="upper"> 
+        <button class="verify-user" onclick="verify()">Verify</button>
+        <button id="view-all-button" class="view-all-btn">View All</button>
+    </div>
+
+    <div class="container">
+        <div class="left-section">
+            <label for="document-type">Document Type</label>
+            <select id="document-type">
+                <option value="select">Select Type</option>
+                <option value="education">Education</option>
+                <option value="offerletter">Offer Letter</option>
+                <option value="resume">Resume</option>
+                <option value="identityproof">Identity Proof</option>
+                <option value="additional">Additional Documents</option>
+            </select>
+            <button class="upload-btn" onclick="triggerFileUpload()">Upload Files</button>
+            <input type="file" id="fileInput" name="fileInput" class="file-input" multiple required>
+        </div>
+        <div class="right-section">
+            <div class="file-section" id="education-files">
+                <div class="file-section-header">
+                    <h3>Education</h3>
+                    <div class="header-buttons">
+                        <button class="bulk-download-btn" onclick="downloadFiles('education-files')">
+                            <i class="fa fa-download"></i> Download
+                        </button>
+                        <button class="expand-btn" id="education-expand-btn"
+                            onclick="toggleFileList('education')">+</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="file-list" id="education-files-list"></div>
+            </div>
+            <div class="file-section" id="offerletter-files">
+                <div class="file-section-header">
+                    <h3>OfferLetter</h3>
+                    <div class="header-buttons">
+                        <button class="bulk-download-btn" onclick="downloadFiles('offerletter-files')">
+                            <i class="fa fa-download"></i> Download
+                        </button>
+                        <button class="expand-btn" id="offerletter-expand-btn"
+                            onclick="toggleFileList('offerletter')">+</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="file-list" id="offerletter-files-list"></div>
+            </div>
+            <div class="file-section" id="resume-files">
+                <div class="file-section-header">
+                    <h3>Resume</h3>
+                    <div class="header-buttons">
+                        <button class="bulk-download-btn" onclick="downloadFiles('resume-files')">
+                            <i class="fa fa-download"></i> Download
+                        </button>
+                        <button class="expand-btn" id="resume-expand-btn" onclick="toggleFileList('resume')">+</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="file-list" id="resume-files-list"></div>
+            </div>
+            <div class="file-section" id="identityproof-files">
+                <div class="file-section-header">
+                    <h3>Identity Proof</h3>
+                    <div class="header-buttons">
+                        <button class="bulk-download-btn" onclick="downloadFiles('identityproof-files')">
+                            <i class="fa fa-download"></i> Download
+                        </button>
+                        <button class="expand-btn" id="identityproof-expand-btn"
+                            onclick="toggleFileList('identityproof')">+</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="file-list" id="identityproof-files-list"></div>
+            </div>
+            <div class="file-section" id="additional-files">
+                <div class="file-section-header">
+                    <h3>Additional Documents</h3>
+                    <div class="header-buttons">
+                        <button class="bulk-download-btn" onclick="downloadFiles('additional-files')">
+                            <i class="fa fa-download"></i> Download
+                        </button>
+                        <button class="expand-btn" id="additional-expand-btn"
+                            onclick="toggleFileList('additional')">+</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="file-list" id="additional-files-list"></div>
+            </div>
+        </div>
+    </div>
+    <script src="FRP_upload.js"></script>
+    <script src="FRP_fetch.js"></script>
+</body>
+
+</html>
